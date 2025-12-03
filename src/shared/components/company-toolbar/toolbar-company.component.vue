@@ -8,6 +8,11 @@ export default {
 
       items: [ //para el button
         {
+          label: 'Mi perfil',  // ⬅️ NUEVO
+          icon: 'pi pi-user',
+          command: () => this.goToProfile(),
+        },
+        {
           label: 'Cerrar sesión',
           icon: 'pi pi-sign-out',
           command: () => this.logout(),
@@ -17,6 +22,9 @@ export default {
   },
 
   methods: {
+    goToProfile() {  // ⬅️ NUEVO MÉTODO
+      this.$router.push('/company/profile');
+    },
     logout() {
       // Eliminar el token de autenticación
       localStorage.removeItem('auth_token');
@@ -45,7 +53,7 @@ export default {
     </template>
 
     <template #end>
-      <pb-SplitButton class="profile-button" label="Mi Perfil" icon="pi pi-user" dropdownIcon="pi pi-cog" :model="items" outlined severity="help" />
+      <pb-SplitButton class="profile-button" label="Mi Perfil" icon="pi pi-user" dropdownIcon="pi pi-cog" :model="items" @click="goToProfile" outlined severity="help" />
     </template>
   </pb-Toolbar>
 </template>

@@ -106,10 +106,12 @@ async function handleLogin() {
       role: response.role
     }))
 
+    // Si es pasajero (role 0) → dashboard público
     if (response.role === 0) {
-      window.location.href = '/'
+      window.location.href = '/dashboard'
     }
 
+    // Si es transportista (role 1) → verificar si tiene empresa
     if (response.role === 1) {
       const transportCompanyService = new TransportCompanyService()
       try {
@@ -150,23 +152,37 @@ async function handleLogin() {
 }
 
 .lang-switcher {
-  align-self: flex-end;
-  margin-bottom: 1rem;
-  margin-right: 1rem;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ecf0f1;
+  border-radius: 8px;
+  padding: 6px 12px;
+  display: flex;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 
 .lang-switcher button {
-  background: none;
+  background-color: transparent;
   border: none;
-  margin-left: 10px;
   font-weight: bold;
   cursor: pointer;
-  color: #6c5ce7;
+  color: #2c3e50;
   font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.lang-switcher button:hover {
+  background-color: #dfe6e9;
 }
 
 .lang-switcher .active {
-  text-decoration: underline;
+  background-color: #6c5ce7;
+  color: white;
 }
 
 .login-card {
@@ -199,6 +215,18 @@ h1 {
 .form-group {
   margin-bottom: 1.2rem;
   text-align: left;
+}
+
+.form-group.has-error input {
+  border-color: #e17055;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #2d3436;
+  font-size: 14px;
 }
 
 input {
@@ -294,42 +322,14 @@ small {
 .register-link a:hover {
   text-decoration: underline;
 }
-.lang-switcher {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: #ecf0f1;
-  border-radius: 8px;
-  padding: 6px 12px;
-  display: flex;
-  gap: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  z-index: 10;
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
 }
 
-.lang-switcher button {
-  background-color: transparent;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  color: #2c3e50;
-  font-size: 14px;
-  padding: 4px 8px;
-  border-radius: 4px;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.lang-switcher button:hover {
-  background-color: #dfe6e9;
-}
-
-.lang-switcher .active {
-  background-color: #6c5ce7;
-  color: white;
-}
-
-
-.has-error input {
-  border-color: #e17055;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

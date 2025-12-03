@@ -2,7 +2,6 @@
 import RoutesAlphaList from "@/discovery/components/routes-alpha/routes-alpha-list.component.vue";
 import RoutesAlphaFilter from "@/discovery/components/routes-alpha/routes-alpha-filter.component.vue";
 import { routeAlphaService } from "@/discovery/services/route-alpha.service.js";
-
 import { DistrictService }  from "@/geography/services/district.service.js";
 import { RegionService } from "@/geography/services/region.service.js";
 import { ProvinceService } from "@/geography/services/province.service.js";
@@ -30,12 +29,9 @@ export default {
       this.isLoading = true;
       this.error = null;
       try {
-
         this.routes = await routeAlphaService.getAll();
-
       } catch (err) {
         this.error = `Error loading routes: ${err.message}`;
-        // Show toast
         this.$toast.add({
           severity: 'error',
           summary: 'Error',
@@ -52,7 +48,6 @@ export default {
         const provinceService = new ProvinceService();
         const districtService = new DistrictService();
 
-        // Fetch all data in parallel
         const [regions, provinces, districts] = await Promise.all([
           regionService.getAll(),
           provinceService.getAll(),
@@ -82,7 +77,6 @@ export default {
         console.log("Filtered routes by district", this.routes);
       } catch (err) {
         this.error = `Error loading filtered routes: ${err.message}`;
-        // Show toast
         this.$toast.add({
           severity: 'error',
           summary: 'Error',
@@ -93,12 +87,11 @@ export default {
       }
     },
 
-    async handleBuscar(districtId){ //recibido del emit, si hubiera mas de un 1 dato pues seria segun el orden de emit
+    async handleBuscar(districtId) {
       console.log("handleBuscar called with districtId:", districtId);
       if (districtId) {
         await this.loadFilteredRoutes(districtId);
       } else {
-        // If no districtId is provided, load all routes
         console.log("districtId not found");
         await this.loadRoutes();
       }
@@ -106,10 +99,10 @@ export default {
 
     async handleBorrar() {
       console.log("handleBorrar called");
-      // Clear the filter and reload all routes
       await this.loadRoutes();
     }
   },
+
   mounted() {
     this.loadRoutes();
     this.loadGeographicData();
@@ -131,16 +124,12 @@ export default {
 </template>
 
 <style scoped>
-
 .routes-alpha-dashboard {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-
   padding-right: 8rem;
   padding-left: 8rem;
-
   padding-top: 3rem;
 }
-
 </style>

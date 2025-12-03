@@ -14,6 +14,12 @@ import CompanyInformation from "@/transport-company/pages/CompanyInformation.vue
 import Suscription from "@/shared/components/Suscription.vue"
 
 const routes = [
+    // REDIRECCIÓN INICIAL AL LOGIN
+    {
+        path: "/",
+        redirect: `${APP_ROUTES.AUTH.ROOT}/${APP_ROUTES.AUTH.LOGIN}`
+    },
+
     /*ROUTES FOR PUBLIC AND TRAVELLER DASHBOARD*/
     {
         path: "/",
@@ -24,14 +30,14 @@ const routes = [
                 component: RoutesList,
             },
             {
-                path: APP_ROUTES.PUBLIC.ROUTES,
+                path: "/routes/:routeId",
                 name: "route-detail",
-                component: RouteCompleteDetailsComponent,
+                component: () => import('@/discovery/pages/RouteDetailPage.vue'),
                 props: true
             },
             {
-              path: APP_ROUTES.PUBLIC.ROOT,
-              name: "Discovery",
+                path: "dashboard",
+                name: "Discovery",
                 component: () => import('@/discovery/pages/routes-alpha-dashboard.vue')
             }
         ]
@@ -53,7 +59,7 @@ const routes = [
         ]
     },
     /* ROUTES FOR COMPANY*/
-   {
+    {
         path: "/"+APP_ROUTES.COMPANY.ROOT,
         children: [
             {
@@ -77,13 +83,18 @@ const routes = [
                         component: RoutesPage,
                     },
                     {
+                        path: APP_ROUTES.COMPANY.PROFILE,
+                        component: () => import('@/transport-company/pages/ProfilePage.vue')
+                    },
+                    {
                         path: APP_ROUTES.COMPANY.INFORMATION,
                         component: CompanyInformation,
                     },
                     {
                         path: APP_ROUTES.COMPANY.SUSCRIPTION,
                         component: Suscription
-                    }
+                    },
+
                 ]
 
             }
@@ -95,18 +106,5 @@ const router = createRouter({
     history: createWebHistory(),
     routes
 })
-/*
-// Guardia de navegación para proteger rutas que requieren autenticación
-router.beforeEach((to, from, next) => {
-    const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
-    const isAuthenticated = localStorage.getItem('auth_token') !== null
-
-    // Si la ruta requiere autenticación y el usuario no está autenticado, redirigir a login
-    if (requiresAuth && !isAuthenticated) {
-        next('/login')
-    } else {
-        next()
-    }
-})*/
 
 export default router
