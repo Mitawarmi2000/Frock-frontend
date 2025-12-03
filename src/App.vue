@@ -20,11 +20,6 @@ export default {
   created() {
     // Verificar si hay un token almacenado para determinar si el usuario está autenticado
     this.checkAuthentication();
-
-    // Forzar redirección a login si estamos en la ruta raíz
-   /* if (this.$route.path === '/') {
-      this.$router.push('/login');
-    }*/
   },
   methods: {
     checkAuthentication() {

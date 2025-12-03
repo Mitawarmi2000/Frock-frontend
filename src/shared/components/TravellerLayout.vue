@@ -6,20 +6,23 @@
       <img src="@/assets/logo-chapaturuta.png" alt="Logo" />
     </div>
 
-    <!-- Navegación centrada -->
-<!--    <nav class="nav-links">
-      <router-link to="/" exact>Inicio</router-link>
-      <router-link to="/routes">Ver mis colecciones</router-link>
-    </nav>-->
+    <div class="app-name">
+      Chapaturuta
+    </div>
 
-    <!-- Botón de perfil -->
     <div class="profile">
       <router-link :to="`${APP_ROUTES.AUTH.ROOT}/${APP_ROUTES.AUTH.LOGIN}`">
         <button class="profile-btn">
-          ¿Gestionas colectivos?
+          Iniciar Sesión
         </button>
       </router-link>
     </div>
+
+    <router-link :to="`/${APP_ROUTES.COMPANY.ROOT}/${APP_ROUTES.COMPANY.SUSCRIPTION}`">
+      <button class="profile-btn" style="margin-left: 1rem">
+        Suscríbete
+      </button>
+    </router-link>
   </header>
   <main class="container">
     <router-view></router-view>
@@ -86,6 +89,12 @@ export default {
   color: #6b63ff;
   font-weight: 500;
   cursor: pointer;
+}
+
+.app-name {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #2a3849;
 }
 
 .profile-btn .icon {

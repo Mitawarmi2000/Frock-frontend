@@ -26,8 +26,8 @@ export class StopEntity {
 
         this.id = id;
         this.name = name;
-        this.google_maps_url = google_maps_url ?? null; // Permite null o cadena
-        this.image_url = image_url ?? null; // Permite null o cadena
+        this.google_maps_url = google_maps_url ?? null;
+        this.image_url = image_url ?? null;
         this.phone = phone;
         this.fk_id_company = fk_id_company;
         this.fk_id_district = fk_id_district;

@@ -8,8 +8,6 @@ export default {
 }
 </script>
 
-
-
 <template>
   <company-toolbar/>
   <main class="page-container">
@@ -19,10 +17,8 @@ export default {
   </main>
 </template>
 
-
-
 <style scoped>
-.page-container {  /*Basicamente la utilidad de esta page container es para centrar a otro container que tiene un tamaño fijo*/
+.page-container {
   display: flex;
   justify-content: center;
   align-items: center;

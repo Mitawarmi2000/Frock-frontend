@@ -7,10 +7,11 @@ import RouteCompleteDetailsComponent from "@/discovery/pages/route-complete-deta
 import StopsPage from "@/network/pages/StopsPage.vue";
 import HomePage from "@/transport-company/pages/HomePage.vue";
 import CompanyLayout from "@/shared/components/CompanyLayout.vue";
-import RoutesList from "@/discovery/components/routes-list/routes-list.vue"
+import RoutesList from "@/discovery/components/routes-list/routes-list.vue";
 import TravellerLayout from "@/shared/components/TravellerLayout.vue";
 import {APP_ROUTES} from "@/shared/services/routes.js";
 import CompanyInformation from "@/transport-company/pages/CompanyInformation.vue";
+import Suscription from "@/shared/components/Suscription.vue"
 
 const routes = [
     /*ROUTES FOR PUBLIC AND TRAVELLER DASHBOARD*/
@@ -78,13 +79,16 @@ const routes = [
                     {
                         path: APP_ROUTES.COMPANY.INFORMATION,
                         component: CompanyInformation,
+                    },
+                    {
+                        path: APP_ROUTES.COMPANY.SUSCRIPTION,
+                        component: Suscription
                     }
                 ]
 
             }
         ]
-    },
-
+    }
 ]
 
 const router = createRouter({

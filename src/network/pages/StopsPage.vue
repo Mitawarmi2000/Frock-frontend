@@ -1,11 +1,9 @@
 <script>
-//imports
 import StopsHeaderTitle from "@/network/components/stops-header-title.component.vue";
 import stopsList from "@/network/components/stops-list.component.vue";
 import { StopService } from "@/network/services/stop.service.js";
 import {ref} from "vue";
 
-//rest of the script
 export default {
   components: {
     StopsHeaderTitle,

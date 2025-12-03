@@ -107,5 +107,4 @@ app.component('pb-Image', Image);
 //FORMS
 app.component('pb-Form', Form);
 
-
 app.mount('#app')

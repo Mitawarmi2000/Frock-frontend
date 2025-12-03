@@ -17,12 +17,12 @@ export const APP_ROUTES = {
     },
     COMPANY:{
         ROOT: 'company',
-
         ONBOARDING: 'onboarding',
         HOME: 'home',
         STOPS: 'stops',
         ROUTES: 'routes',
         PROFILE: 'profile',
         INFORMATION: 'information',
+        SUSCRIPTION: 'suscription'
     }
 }

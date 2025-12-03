@@ -6,6 +6,7 @@ import {MapPinIcon} from "@heroicons/vue/24/solid/index.js";
 import {StopCircleIcon} from "@heroicons/vue/24/solid/index.js";
 import {ClockIcon} from "@heroicons/vue/24/solid/index.js";
 import CompanyInfoCard from "@/transport-company/components/CompanyEditCard.vue";
+import SubscriptionsPrototype from "@/shared/components/Suscription.vue";
 
 </script>
 
@@ -41,6 +42,10 @@ import CompanyInfoCard from "@/transport-company/components/CompanyEditCard.vue"
           color="#FF2C2C"
       />
     </div>
+  </section>
+
+  <section class="kpi-container">
+    <SubscriptionsPrototype/>
   </section>
 
   <section class="company-info-container">
